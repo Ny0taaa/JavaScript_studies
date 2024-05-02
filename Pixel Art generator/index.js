@@ -60,7 +60,35 @@ gridButton.addEventListener("click", ()=>{
                 } else{
                     col.style.backgroundColor = colorButton.value;
                 }
-            })
+            });
+
+            col.addEventListener(events[deviceType].move, (e) =>{
+                let elementId = document.elementFromPoint(
+                    !isTouchDevice() ? e.clientX : e.touches[0].clientX
+                    !isTouchDevice() ? e.clientY : e.touches[0].clientY,
+                ), id;
+                checker(elementId);
+            });
+
+            col.addEventListener(events[deviceType].up, () =>{
+                draw = false;
+            });
         }
+
+        container.appendChild(div)
     }
-})
+});
+
+function checker(elementId){
+    let gridColumns = document.querySelectorAll(".gridCol");
+    gridColumns.forEach((element) =>{
+        if (elementId == element.id) {
+            if(draw && !erase) {
+                element.style.backgroundColor = colorButton.value;
+            } else if ( draw && erase) {
+                element.style.backgroundColor == "transparent";
+            }
+        }
+    });
+}
+
