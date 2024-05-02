@@ -9,3 +9,32 @@ let paintBtn = document.getElementById("paint-btn");
 let widtgValue = document.getElementById("width-value");
 let heightValue = document.getElementById("height-value");
 
+let events = {
+    mouse: {
+        down: "mousedown",
+        move: "mousemove",
+        up: "mouseup"
+    },
+    touch: {
+        down: "touchstart",
+        mobe: "touchmove",
+        up: "touchend",
+    },
+};
+
+let deviceType = "";
+
+let draw = false;
+let erase = false;
+
+const isTouchDevice = () =>{
+    try{
+        document.createEvent("TouchEvent");
+        deviceType = "touch";
+        return true;
+    } catch (e){
+        deviceType = "mouse";
+        return false;
+    }
+};
+
