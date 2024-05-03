@@ -25,10 +25,49 @@ label{
     display: block;
 }
 
+.slidercontainer{
+    width: 70%;
+}
+
+.slider{
+    -webkit-appearance: none;
+    appearance:  none;
+    width: 70%;
+    height: 7px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover{
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #a6a1ff;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #a6a1ff;
+    cursor: pointer;
+}
+
 span{
     position: relative;
     font-size: 22px;
-    bottom: -1px;
+    bottom: 1px;
 }
 
 .opt-wrapper{
@@ -39,11 +78,12 @@ span{
 }
 
 button{
-    background-color: 	#a6a1ff;
+    background-color: #a6a1ff;
     border: none;
     border-radius: 5px;
     padding: 5px;
     color: #000000;
+    cursor: pointer;
 }
 
 input[type="color"]{
