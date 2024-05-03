@@ -18,3 +18,52 @@ let fontList = [
     "Courier New",
     "Cursive",
 ];
+
+const intializer = () =>{
+    highlighter(alignButtons, true);
+    highlighter(spacingButtons, true);
+    highlighter(formatButton, false);
+    highlighter(scriptButtons, true);
+
+    fontList.map((value) =>{
+        let option = document.createElement("option");
+        option.value = value;
+        option.innerHTML = value;
+        fontName.appendChild(option);
+    });
+
+    for (let i = 1; i<= 7; i++){
+        let option = document.createElement("option");
+        option.value = i;
+        option.innerHTML = i;
+        fontSizeRef.appendChild(option);
+    }
+
+    fontSizeRef.value = 3
+}
+
+const modifyText = (command, defaultUi, value) =>{
+    document.exeeCommand(command, defaultUi, value);
+};
+
+optiionsButtons.forEach((button) =>{
+    button.addEventListener("click", ()=> {
+        modifyText(button.id, false, null);
+    });
+});
+
+advancedOptionButton.forEach((button) =>{
+    button.addEventListener("change", ()=> {
+        modifyText(button.id, false, null);
+    });
+});
+
+linkButton.addEventListener("click", () =>{
+    let userLink = prompt("Enter a URL?");
+    if (/http/i.test(userLink)) {
+        modifyText(linkButtons.id, false, userLink);
+    } else{
+        userLink = "http://" + userLink;
+        modifyText(linkButton.id, false, userLink);
+    }
+});
